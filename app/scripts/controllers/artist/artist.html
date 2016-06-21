@@ -1,0 +1,43 @@
+<div class="bg-main">
+	<div class="bg-main-img"></div>
+</div>
+<i class="fa fa-spotify fa-3x" aria-hidden="true"></i>
+<span class="logo-text">Spotify</span>
+<form ng-submit="home.search(home.searchInput)">
+	<input type="text" class="search-input" ng-model="home.searchInput">
+</form>
+<div>
+	<div class="page-header row">
+		<div class="col-md-3">
+			<img src="{{artist.artist.images[2].url}}" alt="Artist thumbnail" class="img-responsive thumbnail center-block"></img>
+		</div>
+		<div class="col-md-9">
+			<h3>ARTIST</h3>
+			<h1>{{artist.artist.name}}</h1>
+		</div>
+	</div>
+	<h2>Popular</h3>
+		<ul class="list-group">
+    	<li class="list-group-item" ng-repeat="track in artist.tracks">
+				<a ui-sref="Album({albumId: track.album.id})">
+					<img src="{{track.album.images[2].url}}" alt="Album cover"></img>
+				</a>
+				<b>{{track.name}}</b>
+    	</li>
+  	</ul>
+	<hr>
+	<h2>Albums</h2>
+	<div class="row">
+  <div class="col-sm-6 col-md-3" ng-repeat="album in artist.albums">
+    <div class="thumbnail">
+			<a ui-sref="Album({albumId: album.id})">
+				<img src="{{album.images[1].url}}" alt="Album cover" class="album-cover">
+			</a>
+      <div class="caption">
+        <h2><b>{{album.name}}</b></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

@@ -10,3 +10,9 @@ body {
   background-color: $background--dark;
   padding: $half-space;
 }
+
+.table-hover {
+  > tbody > tr:hover {
+    background-color: $purple;
+  }
+}

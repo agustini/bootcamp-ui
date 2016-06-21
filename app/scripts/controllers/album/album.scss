@@ -30,6 +30,12 @@
     padding: 0 10px;
 }
 
-.list-group-item {
-	background: none;
+.thumbnail {
+height: 300px;
+}
+
+.thumbnail  .album-cover {
+    display: block;
+    width: auto;
+    max-height: 75%;
 }

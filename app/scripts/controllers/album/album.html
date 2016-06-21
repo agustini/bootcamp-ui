@@ -1,0 +1,33 @@
+<div class="bg-main">
+	<div class="bg-main-img"></div>
+</div>
+<i class="fa fa-spotify fa-3x" aria-hidden="true"></i>
+<span class="logo-text">Spotify</span>
+<form ng-submit="home.search(home.searchInput)">
+	<input type="text" class="search-input" ng-model="home.searchInput">
+</form>
+<div>
+	<div class="page-header row">
+		<div class="col-md-3">
+			<img src="{{album.album.images[1].url}}" alt="Album cover" class="img-responsive center-block"></img>
+		</div>
+		<div class="col-md-9">
+			<h3>ALBUM</h3>
+			<h1>{{album.album.name}}</h1>
+			<small>by <a ui-sref="Artist({artistId: album.album.artists[0].id})">{{album.album.artists[0].name}} </a> - {{album.album.release_date | date:"yyyy"}} - {{album.album.tracks.total}} songs</small>
+		</div>
+	</div>
+	<h2>Tracks</h3>
+	<table class="table table-hover">
+		<tr>
+			<th>#</th>
+			<th>Song</th>
+			<th><i class="fa fa-clock-o" aria-hidden="true"></i></th>
+		</tr>
+		<tr ng-repeat="track in album.album.tracks.items">
+			<td>{{ track.track_number }}</td>
+			<td>{{ track.name }}</td>
+			<td>{{ track.duration_ms | date:'mm:ss'}}</td>
+		</tr>
+	</table>
+</div>

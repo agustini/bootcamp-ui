@@ -4,13 +4,55 @@
 <div>
 	<i class="fa fa-spotify fa-3x" aria-hidden="true"></i>
 	<span class="logo-text">Spotify</span>
-	<form ng-submit="home.search()">
+	<form ng-submit="home.search(home.searchInput)">
 		<input type="text" class="search-input" ng-model="home.searchInput">
 	</form>
+	<h2>Artists</h2>
+	<div class="row">
+  	<div class="col-sm-6 col-md-3" ng-repeat="artist in home.artists">
+    	<div class="thumbnail">
+				<a ui-sref="Artist({artistId: artist.id})">
+					<img src="{{artist.images[1].url}}" alt="Artist thumbnail" class="album-cover">
+				</a>
+    	<div class="caption">
+      	<h2><b>{{artist.name}}</b></h2>
+      </div>
+    	</div>
+  	</div>
+	</div>
+	<hr>
+	<h2>Albums</h2>
+	<div class="row">
+  	<div class="col-sm-6 col-md-3" ng-repeat="album in home.albums">
+    	<div class="thumbnail">
+				<a ui-sref="Album({albumId: album.id})">
+					<img src="{{album.images[1].url}}" alt="Album cover" class="album-cover">
+				</a>
+    	<div class="caption">
+      	<h2><b>{{album.name}}</b></h2>
+      </div>
+    	</div>
+  	</div>
+	</div>
+		<table class="table table-hover">
+			<tr>
+				<th>Song</th>
+				<th>Artist</th>
+				<th>Album</th>
+				<th>Length</th>
+			</tr>
+			<tr ng-repeat="track in home.tracks">
+				<td>{{ track.name }}</td>
+				<td>{{ track.artists[0].name }}</td>
+				<td>{{ track.album.name }}</td>
+				<td>{{ track.duration_ms | date:'mm:ss'}}</td>
+			</tr>
+		</table>
+	</div>
 	<div class="audio-player">
+		<i ng-click="" class="fa fa-backward fa-3x" aria-hidden="true"></i>
 		<i ng-show="home.isPaused()" ng-click="home.play()" class="fa fa-play-circle fa-3x" aria-hidden="true"></i>
 		<i ng-show="!home.isPaused()" ng-click="home.pause()" class="fa fa-pause-circle fa-3x" aria-hidden="true"></i>
+		<i ng-click="" class="fa fa-forward fa-3x" aria-hidden="true"></i>
 	</div>
 </div>
-<example-component hero="home.hero"></example-component>
-<div example-directive title="WOW!" click-message="You clicked me!">Directive is not loaded.</div>
